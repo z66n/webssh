@@ -3,64 +3,6 @@
 var jQuery;
 var wssh = {};
 
-
-(function() {
-  // For FormData without getter and setter
-  var proto = FormData.prototype,
-      data = {};
-
-  if (!proto.get) {
-    proto.get = function (name) {
-      if (data[name] === undefined) {
-        var input = document.querySelector('input[name="' + name + '"]'),
-            value;
-        if (input) {
-          if (input.type === 'file') {
-            value = input.files[0];
-          } else {
-            value = input.value;
-          }
-          data[name] = value;
-        }
-      }
-      return data[name];
-    };
-  }
-
-  if (!proto.set) {
-    proto.set = function (name, value) {
-      data[name] = value;
-    };
-  }
-
-  document.querySelector('#sshlinkBtn').addEventListener("click", updateSSHlink);
-}());
-
-function updateSSHlink() {
-    var thisPageProtocol = window.location.protocol;
-    var thisPageUrl = window.location.host;
-
-    var hostnamestr = document.getElementById("hostname").value;
-    var portstr = document.getElementById("port").value;
-    if (portstr == "") {
-        portstr = "22"
-    }
-    var usrnamestr = document.getElementById("username").value;
-    if (usrnamestr == "") {
-      usrnamestr = "root"
-    }
-    var passwdstr = document.getElementById("password").value;
-    var passwdstrAfterBase64 = window.btoa(passwdstr);
-
-    var initcmdstr = document.getElementById("initcmd").value;
-    var initcmdstrAfterURI = encodeURIComponent(initcmdstr);
-
-    var sshlinkstr;
-    sshlinkstr = thisPageProtocol+"//"+thisPageUrl+"/?hostname="+hostnamestr+"&port="+portstr+"&username="+usrnamestr+"&password="+passwdstrAfterBase64+"&command="+initcmdstrAfterURI;
-
-    document.getElementById("sshlink").innerHTML = sshlinkstr;
-}
-
 jQuery(function($){
   var status = $('#status'),
       button = $('.btn-primary'),
