@@ -164,6 +164,13 @@
       white-space: nowrap;
     }
 
+    .github-corner {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 9999;
+    }
+
     .github-corner svg {
       fill: var(--accent-color);
       color: var(--light-bg);
@@ -232,7 +239,7 @@
       }
     }
 
-    { % if font.family % }
+    {% if font.family %}
 
     @font-face {
       font-family: '{{ font.family }}';
@@ -266,7 +273,7 @@
       margin: 0;
     }
 
-    { % end % }
+    {% end %}
   </style>
 </head>
 
