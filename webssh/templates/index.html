@@ -60,14 +60,17 @@
     }
 
     .form-control {
-    border: 2px solid #eee;
-    border-radius: 8px;
-    padding: 1rem 1.2rem; /* 增加内边距 */
-    height: calc(3rem + 2px); /* 设置固定高度 */
-    line-height: 1.5; /* 设置行高 */
-    transition: all 0.3s ease;
-    background: #f8f9fa;
-}
+      border: 2px solid #eee;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      /* 增加内边距 */
+      height: calc(3rem + 2px);
+      /* 设置固定高度 */
+      line-height: 1.5;
+      /* 设置行高 */
+      transition: all 0.3s ease;
+      background: #f8f9fa;
+    }
 
     .form-control:focus {
       border-color: var(--accent-color);
@@ -163,7 +166,7 @@
 
     .github-corner svg {
       fill: var(--accent-color);
-      color: var(--light-bg);;
+      color: var(--light-bg);
       position: absolute;
       top: 0;
       right: 0;
@@ -229,9 +232,7 @@
       }
     }
 
-      {
-      % if font.family %
-    }
+    { % if font.family % }
 
     @font-face {
       font-family: '{{ font.family }}';
@@ -265,9 +266,7 @@
       margin: 0;
     }
 
-      {
-      % end %
-    }
+    { % end % }
   </style>
 </head>
 
