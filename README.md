@@ -14,7 +14,9 @@ https://linux.do/t/topic/135264
 部署到 Serv00 教程 / 作者 Xiang xjfkkk  
 https://linux.do/t/topic/211113
 
-
+```shell
+pip install -r requirements.txt && python run.py --delay=10 --encoding=utf-8 --fbidhttp=False --maxconn=20 --origin='*' --policy=warning --redirect=False --timeout=10 --port=52278 --debug --xsrf=False --xheaders --wpintvl=1
+```
 <details>
     <summary>原项目readme (点击展开)</summary>
   
