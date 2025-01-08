@@ -495,6 +495,9 @@ jQuery(function($){
     });
 
     sock.onopen = function() {
+      // 连接成功时隐藏waiter
+      waiter.hide();
+      document.querySelector('.github-corner').classList.add('hidden');
       term.open(terminal);
       toggle_fullscreen(term);
       update_font_family(term);
@@ -513,6 +516,9 @@ jQuery(function($){
     };
 
     sock.onerror = function(e) {
+      // 连接错误时隐藏waiter
+      waiter.hide();
+      document.querySelector('.github-corner').classList.remove('hidden');
       console.error(e);
     };
 

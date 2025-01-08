@@ -168,9 +168,15 @@
       position: fixed;
       top: 0;
       right: 0;
-      z-index: 9999;
+      z-index: 100;
+      transition: opacity 0.3s ease; /* 添加过渡效果 */
     }
 
+    .github-corner.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
     .github-corner svg {
       fill: var(--accent-color);
       color: var(--light-bg);
