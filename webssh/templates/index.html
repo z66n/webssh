@@ -208,6 +208,74 @@
       /* 防止按钮被压缩 */
     }
 
+    /* 文件选择按钮的基本样式 */
+    .file-btn {
+      /* 移除右上角和右下角的圆角 */
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      /* 设置内边距,使按钮更大更易点击 */
+      padding: 0.8rem 1.2rem;
+      /* 使用预定义的主题色作为背景色 */
+      background: var(--secondary-color); 
+      /* 移除边框 */
+      border: none;
+      /* 添加过渡效果,使样式变化更平滑 */
+      transition: all 0.3s ease;
+      /* 设置相对定位,为光效动画做准备 */
+      position: relative;
+      /* 隐藏超出按钮范围的内容 */
+      overflow: hidden;
+    }
+
+    /* 鼠标悬停时的按钮样式 */
+    .file-btn:hover {
+      /* 添加渐变背景,使按钮更有层次感 */
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      /* 添加发光效果 */
+      box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+      /* 轻微放大按钮,增加交互感 */
+      transform: scale(1.05);
+    }
+
+    /* 创建光效动画的元素 */
+    .file-btn:before {
+      /* 创建伪元素 */
+      content: '';
+      /* 绝对定位,相对于按钮定位 */
+      position: absolute;
+      top: 0;
+      /* 初始位置在按钮左侧外部 */
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      /* 创建透明渐变,形成光效 */
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      /* 添加过渡效果 */
+      transition: 0.5s;
+    }
+
+    /* 鼠标悬停时触发光效动画 */
+    .file-btn:hover:before {
+      /* 将光效移动到按钮右侧,形成扫光效果 */
+      left: 100%;
+    }
+
+    .file-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      background: #f8f9fa;
+    }
+
+    .input-group-btn {
+      margin: 0;
+      padding: 0;
+    }
+
     @media (max-width: 768px) {
       .main-container {
         padding: 1rem;
@@ -380,7 +448,21 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="privatekey">私钥 (Private Key)</label>
-              <input class="form-control" type="file" id="privatekey" name="privatekey" value="">
+              <div class="input-group">
+                <label class="input-group-btn">
+                  <span class="btn btn-primary file-btn">
+                    <i class="fas fa-folder-open"></i> 选择文件
+                    <input 
+                      type="file" 
+                      id="privatekey" 
+                      name="privatekey" 
+                      style="display: none;"
+                      onchange="document.getElementById('showFilename').value = this.files.length ? this.files[0].name : '未选择文件'"
+                    >
+                  </span>
+                </label>
+                <input type="text" class="form-control file-input" id="showFilename" placeholder="未选择私钥文件" readonly>
+              </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="passphrase">密钥口令 (Passphrase)</label>
