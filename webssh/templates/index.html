@@ -162,8 +162,14 @@
     .link-text {
       padding: 0.5rem;
       flex: 1;
-      overflow-x: auto;
+      overflow-x: scroll;
       white-space: nowrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .link-text::-webkit-scrollbar {
+      display: none;
     }
 
     .github-corner {
@@ -171,14 +177,15 @@
       top: 0;
       right: 0;
       z-index: 100;
-      transition: opacity 0.3s ease; /* 添加过渡效果 */
+      transition: opacity 0.3s ease;
+      /* 添加过渡效果 */
     }
 
     .github-corner.hidden {
       opacity: 0;
       pointer-events: none;
     }
-    
+
     .github-corner svg {
       fill: var(--accent-color);
       color: var(--light-bg);
@@ -218,7 +225,7 @@
       /* 设置内边距,使按钮更大更易点击 */
       padding: 0.8rem 1.2rem;
       /* 使用预定义的主题色作为背景色 */
-      background: var(--secondary-color); 
+      background: var(--secondary-color);
       /* 移除边框 */
       border: none;
       /* 添加过渡效果,使样式变化更平滑 */
@@ -251,12 +258,10 @@
       width: 100%;
       height: 100%;
       /* 创建透明渐变,形成光效 */
-      background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-      );
+      background: linear-gradient(120deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent);
       /* 添加过渡效果 */
       transition: 0.5s;
     }
@@ -385,25 +390,25 @@
       // 获取元素
       var sshlinkElement = document.querySelector("#sshlink .link-text");
       var sshlink = document.getElementById("sshlink");
-      
+
       // 清空之前的内容
       sshlinkElement.textContent = '';
-      
+
       // 显示容器
       sshlink.classList.add('active');
 
       // 实现打字机效果
       let i = 0;
       const typeWriter = () => {
-          if (i < sshlinkstr.length) {
-              sshlinkElement.textContent += sshlinkstr.charAt(i);
-              i++;
-              setTimeout(typeWriter, 6); // 每个字符之间的延迟
-          } else {
-              sshlinkElement.classList.remove('typing');
-          }
+        if (i < sshlinkstr.length) {
+          sshlinkElement.textContent += sshlinkstr.charAt(i);
+          i++;
+          setTimeout(typeWriter, 6); // 每个字符之间的延迟
+        } else {
+          sshlinkElement.classList.remove('typing');
+        }
       }
-      
+
       // 开始打字效果
       setTimeout(typeWriter, 300); // 等待容器动画开始后再开始打字
     }
@@ -427,8 +432,7 @@
       document.getElementById('sshlinkBtn').addEventListener('click', updateSSHlink);
     });
   </script>
-  <a href="https://github.com/cmliu/huashengdun-webssh" target="_blank" class="github-corner"
-    aria-label="View source on Github">
+  <a href="https://github.com/cmliu/webssh" target="_blank" class="github-corner" aria-label="View source on Github">
     <svg viewBox="0 0 250 250" aria-hidden="true">
       <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
       <path
@@ -482,13 +486,8 @@
                 <label class="input-group-btn">
                   <span class="btn btn-primary file-btn">
                     <i class="fas fa-folder-open"></i> 选择文件
-                    <input 
-                      type="file" 
-                      id="privatekey" 
-                      name="privatekey" 
-                      style="display: none;"
-                      onchange="document.getElementById('showFilename').value = this.files.length ? this.files[0].name : '未选择文件'"
-                    >
+                    <input type="file" id="privatekey" name="privatekey" style="display: none;"
+                      onchange="document.getElementById('showFilename').value = this.files.length ? this.files[0].name : '未选择文件'">
                   </span>
                 </label>
                 <input type="text" class="form-control file-input" id="showFilename" placeholder="未选择私钥文件" readonly>
