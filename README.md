@@ -30,7 +30,7 @@ services:
 ```shell
 git clone https://github.com/cmliu/webssh
 cd webssh
-pip install -r requirements.txt && python run.py --delay=10 --encoding=utf-8 --fbidhttp=False --maxconn=20 --origin='*' --policy=warning --redirect=False --timeout=10 --port=52278 --debug --xsrf=False --xheaders --wpintvl=1
+pip install -r requirements.txt && python run.py --delay=10 --encoding=utf-8 --fbidhttp=False --maxconn=20 --origin='*' --policy=warning --redirect=False --timeout=10 --port=8888 --debug --xsrf=False --xheaders --wpintvl=1
 ```
 
 ## 💡 工作原理
