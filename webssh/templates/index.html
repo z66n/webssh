@@ -5,11 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebSSH Console</title>
-  <link href="static/img/favicon.png" rel="icon" type="image/png">
+  <link href="static/img/favicon-32.png" rel="icon" type="image/png">
   <link href="static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <link href="static/css/xterm.min.css" rel="stylesheet" type="text/css" />
   <link href="static/css/fullscreen.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="manifest" href="static/manifest.json">
+  <meta name="theme-color" content="#2c3e50">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="WebSSH">
+  <link rel="apple-touch-icon" href="static/img/favicon-32.png">
   <style>
     :root {
       --primary-color: #2c3e50;
@@ -431,6 +437,19 @@
     document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('sshlinkBtn').addEventListener('click', updateSSHlink);
     });
+
+    // 注册 Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/static/js/service-worker.js')
+          .then(registration => {
+            console.log('ServiceWorker 注册成功');
+          })
+          .catch(err => {
+            console.log('ServiceWorker 注册失败：', err);
+          });
+      });
+    }
   </script>
   <a href="https://github.com/cmliu/webssh" target="_blank" class="github-corner" aria-label="View source on Github">
     <svg viewBox="0 0 250 250" aria-hidden="true">
