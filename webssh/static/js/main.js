@@ -775,22 +775,10 @@ jQuery(function ($) {
     var prop = 'connect',
       args;
 
-    if (typeof event.data === 'object' && event.data !== null) {
-      // 如果是对象类型，直接使用
-      args = event.data;
-    } else {
-      try {
-        // 尝试解析 JSON 字符串
-        args = JSON.parse(event.data);
-      } catch (SyntaxError) {
-        // 如果既不是对象也不是 JSON，尝试作为普通字符串处理
-        if (typeof event.data === 'string') {
-          args = event.data.split('|');
-        } else {
-          console.error('不支持的 event.data 类型：', typeof event.data);
-          return;
-        }
-      }
+    try {
+      args = JSON.parse(event.data);
+    } catch (SyntaxError) {
+      args = event.data.split('|');
     }
 
     if (!Array.isArray(args)) {
