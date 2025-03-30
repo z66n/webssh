@@ -1,0 +1,30 @@
+name: Sync Upstream WebSSH
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set Up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add Upstream and Fetch
+        run: |
+          git remote add upstream https://github.com/cmliu/webssh.git || true
+          git fetch upstream
+          git checkout master
+          git merge upstream/master --allow-unrelated-histories || true
+
+      - name: Push to Fork
+        run: git push origin master
