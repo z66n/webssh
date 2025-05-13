@@ -1,5 +1,5 @@
 # WebSSH
-![webssh](./img.png)
+![webssh](./Picture1.gif)
 
 为你的SSH连接需求提供安全便捷的管理方案
 
