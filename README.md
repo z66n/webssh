@@ -7,8 +7,8 @@
 WebSSH 是一个基于 Web 的轻量级 SSH 管理工具，方便地在浏览器中进行安全的远程服务器管理。
 
 ## 🚀 一键云部署
-[![](https://raw.githubusercontent.com/ClawCloud/Run-Template/refs/heads/main/Run-on-ClawCloud.svg)](https://template.run.claw.cloud/?openapp=system-fastdeploy%3FtemplateName%3Dwebssh)
-
+[![Run on CLAWCLOUD](https://raw.githubusercontent.com/ClawCloud/Run-Template/refs/heads/main/Run-on-ClawCloud.svg)](https://template.run.claw.cloud/?openapp=system-fastdeploy%3FtemplateName%3Dwebssh)
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=docker&name=webssh&ports=8888;http;/&image=docker.io/cmliu/webssh)
 ## 🐳 Docker 一键部署
 ```shell
 docker run -d --name webssh --restart always -p 8888:8888 cmliu/webssh:latest
